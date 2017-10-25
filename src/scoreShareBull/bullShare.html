@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>战绩</title>
+  <link rel="stylesheet" href="./style/normalize.css">
+  <style>
+    .hide-area {
+      display: none;
+    }
+    
+    .hide-area.btn-area-active {
+      display: block;
+      /* margin-left: 2%; */
+    }
+    
+    .preload {
+      display: none;
+    }
+    
+    .before-image {
+      position: absolute;
+      top: 0;
+      background: #fff;
+      font-size: 20px;
+      line-height: 200px;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+  </div>
+  <script src="./lib/weixinapi.min.js"></script>
+  <script src="./lib/html2canvas.min.js"></script>
+  <script src="./bullScore.js"></script>
+</body>
+
+</html>
