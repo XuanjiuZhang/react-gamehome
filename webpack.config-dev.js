@@ -2,7 +2,7 @@
  * @Author: zhangxuanjiu 
  * @Date: 2017-08-31 10:29:41 
  * @Last Modified by: zhangxuanjiu
- * @Last Modified time: 2017-10-25 17:29:17
+ * @Last Modified time: 2017-10-25 21:26:25
  */
 
 const path = require('path')
@@ -23,7 +23,7 @@ var webpackConfig = {
       'babel-polyfill',
       'whatwg-fetch',
       './scoreShareBull/bullScore.jsx',
-      'webpack-dev-server/client?http://10.10.10.112:8085/',
+      'webpack-dev-server/client?http://localhost:8085/',
       'webpack/hot/dev-server',
     ],
   },
@@ -40,7 +40,7 @@ var webpackConfig = {
         NODE_ENV: '"development"'
       }
     }),
-    new OpenBrowserPlugin({ url: 'http://10.10.10.112:8085' })
+    new OpenBrowserPlugin({ url: 'http://localhost:8085' })
   ],
   module: {
     rules: [{
@@ -54,7 +54,7 @@ var webpackConfig = {
       {
         test: /\.(js|jsx)$/,
         use: ['babel-loader'],
-        include: path.join(__dirname, 'js')
+        exclude: /node_modules/
       },
       {
         test: /\.css/,

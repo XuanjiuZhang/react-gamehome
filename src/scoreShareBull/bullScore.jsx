@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect, Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
-import scoreManager from './components/scoreManager'
+import ScoreManager from './components/scoreManager'
 
 const mapStateToProps = (state) => {
   return {
@@ -31,10 +31,10 @@ const mapDispatchToProps = (
   };
 };
 
-const manager = connect(
+const Manager = connect(
   mapStateToProps,
   mapDispatchToProps
-)(scoreManager);
+)(ScoreManager);
 
 const manageStatus = (state = {}, action) => {
   // let {currentPageIndex, deltaX, deltaY} = state;
@@ -60,11 +60,13 @@ const reducer = combineReducers({ manageStatus, gameInfo });
 
 let store = createStore(reducer);
 
-const ProviderElement = React.createElement(Provider, {store}, React.createElement(manager))
+// const ProviderElement = React.createElement(Provider, {store}, React.createElement(manager))
 // {/* <Provider store={store}>
 //     <manager></manager>
 //   </Provider> */}
 
 ReactDOM.render(
-  ProviderElement,
+  <Provider store={store}>
+    <Manager></Manager>
+  </Provider>,
   document.getElementById('root'));
