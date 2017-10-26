@@ -53,7 +53,7 @@ const timeUtil = {
   }
 }
 
-function screenOrientation({ changeOrientation }) {
+function screenOrientation(dispatch) {
   var supportOrientation = (typeof window.orientation === 'number' &&
     typeof window.onorientationchange === 'object');
 
@@ -62,7 +62,10 @@ function screenOrientation({ changeOrientation }) {
     const updateOrientation = function() {
       const rootEle = document.getElementById('root')
       orientation = (rootEle.offsetWidth > rootEle.offsetHeight) ? 'landscape' : 'portrait'
-      changeOrientation(orientation)
+      dispatch({
+        type: 'SCREEN_ORIEN_CHANGE',
+        orientation
+      })
     };
 
     if (supportOrientation) {
