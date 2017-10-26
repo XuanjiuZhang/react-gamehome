@@ -1,64 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect, Provider } from 'react-redux'
-import { createStore, combineReducers } from 'redux'
-import ScoreManager from './components/scoreManager'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import {DomDisplayer, reducer as domReducer} from './components/scoreDomDisplayer/index'
 
-const mapStateToProps = (state) => {
-  return {
-    scenedata: 1,
-  }
-}
+const finnalReducer = combineReducers({ domReducer })
 
-const mapDispatchToProps = (
-  dispatch,
-  ownProps
-) => {
-  return {
-    goPrePage: () => {
-      dispatch({
-        type: 'GO_PRE_PAGE',
-        payload: 1
-      });
-    },
-    goNextPage: () => {
-      console.log('goNextPage');
-      dispatch({
-        type: 'GO_NEXT_PAGE',
-        payload: 2
-      });
-    }
-  };
-};
-
-const Manager = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ScoreManager);
-
-const manageStatus = (state = {}, action) => {
-  // let {currentPageIndex, deltaX, deltaY} = state;
-  switch (action.type) {
-    case 'GO_PRE_PAGE':
-      return Object.assign({}, state)
-    default:
-      return state;
-  }
-}
-
-const gameInfo = (state = {}, action) => {
-  // let {currentPageIndex, deltaX, deltaY} = state;
-  switch (action.type) {
-    case 'GO_PRE_PAGE':
-      return Object.assign({}, state)
-    default:
-      return state;
-  }
-}
-
-const reducer = combineReducers({ manageStatus, gameInfo });
-
-let store = createStore(reducer);
+let store = createStore(finnalReducer, applyMiddleware(thunk))
 
 // const ProviderElement = React.createElement(Provider, {store}, React.createElement(manager))
 // {/* <Provider store={store}>
@@ -67,6 +16,6 @@ let store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Manager></Manager>
+    <DomDisplayer></DomDisplayer>
   </Provider>,
   document.getElementById('root'));
