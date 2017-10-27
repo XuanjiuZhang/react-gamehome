@@ -2,7 +2,7 @@
  * @Author: zhangxuanjiu 
  * @Date: 2017-08-07 16:21:14 
  * @Last Modified by: zhangxuanjiu
- * @Last Modified time: 2017-10-25 21:23:18
+ * @Last Modified time: 2017-10-27 15:21:39
  */
 var gulp = require('gulp');
 var webpack = require('webpack');
@@ -86,7 +86,7 @@ gulp.task('dev', ['copy'], function() {
     port: 8085
 
   });
-  server.listen(8085, 'localhost');
+  server.listen(8085, '10.10.10.112');
 });
 
 gulp.task('build', ['copy'], function() {

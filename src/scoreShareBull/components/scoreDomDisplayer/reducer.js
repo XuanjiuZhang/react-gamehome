@@ -13,7 +13,7 @@ const domDisplayer = (state = {}, action) => {
       if (action.data.result) {
         return Object.assign({}, state, { loadingData: false, fetchError: true, errorMsg: action.data.message })
       }
-      return Object.assign({}, state, { loadingData: false, gameData: action.data })
+      return Object.assign({}, state, { loadingData: false, gameData: action.data.data })
     default:
       return state;
   }

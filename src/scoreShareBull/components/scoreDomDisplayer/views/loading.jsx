@@ -1,10 +1,10 @@
 import React from 'react'
-const loading = () => {
+const loading = ({loadingTip}) => {
   return (
-    <div className="full share-content">
+    <div className="full share-content loading">
       <div className="result-wrapper container-column">
         <div className="error-info">
-          战绩加载中,请稍候...
+          {loadingTip}
         </div>
       </div>
     </div>

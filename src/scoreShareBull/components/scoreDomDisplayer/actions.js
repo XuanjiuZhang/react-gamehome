@@ -55,4 +55,25 @@ const fetchPosts = (dispatch, getState) => {
     })
 }
 
-export { fetchPosts, storeQueryStringData }
+const orientationChange = (orientation) => (dispatch, getState) => {
+  var rootEle = document.getElementById('root')
+  console.log('orientationChange!!!!!!')
+  console.log(rootEle)
+  if (orientation === 'portrait' && rootEle.offsetHeight / rootEle.offsetWidth > 1.3) {
+    rootEle.style.width = ''
+    rootEle.style.height = ''
+  } else {
+    let domHeight = document.body.offsetHeight
+    console.log(rootEle.offsetHeight / rootEle.offsetWidth);
+    rootEle.style.width = domHeight / 1.6 + 'px'
+    rootEle.style.height = domHeight + 'px'
+    rootEle.style.margin = 'auto'
+    rootEle.style.position = 'relative'
+  }
+  return dispatch({
+    type: 'SCREEN_ORIEN_CHANGE',
+    orientation
+  })
+}
+
+export { fetchPosts, storeQueryStringData, orientationChange }

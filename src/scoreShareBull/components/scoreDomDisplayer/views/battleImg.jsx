@@ -1,14 +1,17 @@
 import React from 'react'
-const loading = () => {
-  return (
-    <div className="full share-content">
-      <div className="result-wrapper container-column">
-        <div className="error-info">
-          战绩图片...
-        </div>
+const battleImg = ({canvas}) => {
+  if (!canvas) {
+    return (
+      <div className="full">
       </div>
+    )
+  }
+  const imgSrc = canvas.toDataURL('image/png')
+  return (
+    <div className="full-height">
+      <img src={imgSrc} className="full-height" alt=""/>
     </div>
   )
 }
 
-export default loading
+export default battleImg
