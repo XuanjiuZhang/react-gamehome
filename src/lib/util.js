@@ -58,15 +58,17 @@ function screenOrientation(dispatch, action) {
     typeof window.onorientationchange === 'object');
 
   var init = function() {
-    let orientation;
     const updateOrientation = function() {
       // dispatch({
       //   type: 'SCREEN_ORIEN_CHANGE',
       //   orientation
       // })
-      const rootEle = document.getElementById('root')
-      orientation = (rootEle.offsetWidth > rootEle.offsetHeight) ? 'landscape' : 'portrait'
-      dispatch(action(orientation))
+      setTimeout(function() {
+        let orientation;
+        const body = document.body
+        orientation = (body.offsetWidth > body.offsetHeight) ? 'landscape' : 'portrait'
+        dispatch(action(orientation))
+      }, 200);
     };
 
     if (supportOrientation) {

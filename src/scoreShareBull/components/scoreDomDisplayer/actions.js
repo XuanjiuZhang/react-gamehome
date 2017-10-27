@@ -57,11 +57,10 @@ const fetchPosts = (dispatch, getState) => {
 
 const orientationChange = (orientation) => (dispatch, getState) => {
   var rootEle = document.getElementById('root')
-  console.log('orientationChange!!!!!!')
-  console.log(rootEle)
+  console.log(rootEle.offsetHeight / rootEle.offsetWidth)
   if (orientation === 'portrait' && rootEle.offsetHeight / rootEle.offsetWidth > 1.3) {
-    rootEle.style.width = ''
-    rootEle.style.height = ''
+    rootEle.style.width = '100%'
+    rootEle.style.height = '100%'
   } else {
     let domHeight = document.body.offsetHeight
     console.log(rootEle.offsetHeight / rootEle.offsetWidth);
